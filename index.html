@@ -82,6 +82,12 @@ document.getElementById("uploader").onchange = function(e) {
 fabric.Image.fromURL('img/twibbon.png', function(img) {
     canvas.setOverlayImage(img, canvas.renderAll.bind(canvas));
 });
+
+$("#download").click(function(){
+$("#c").get(0).toBlob(function(blob){
+saveAs(blob, "myIMG.png");
+});
+});
 </script>
 <!--
 <script src="js/app.js"></script>
