@@ -25,6 +25,10 @@ a:link, a:visited {
 color: #38488f;
 text-decoration: none;
 }
+img, canvas {
+width: 100%;
+height: auto;
+}
 @media (max-width: 700px) {
 main {
 margin: 0 auto;
@@ -32,6 +36,11 @@ width: auto;
 }
 }
 </style>    
+
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/fabric.min.js"></script>
+<script src="js/FileSaver.js"></script>
+<script src="js/canvas-toBlob.js"></script>
 </head>
 
 <body>
