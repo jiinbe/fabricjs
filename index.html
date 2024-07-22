@@ -65,8 +65,8 @@ image.src = e.target.result;
 image.onload = function() {
 var img = new fabric.Image(image);
 img.set({
-left: 100,
-top: 60
+left: 0,
+top: 0
 });
 img.scaleToWidth(200);
 canvas.add(img).setActiveObject(img).renderAll();
