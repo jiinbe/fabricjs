@@ -53,7 +53,6 @@ width: auto;
 <p><input id="uploader" type="file" accept="image/*"></p>
 <p>
 <div id="stage-parent">
-<div id="container"></div>
 <canvas id="c"></canvas>
 </div>
 </p>
@@ -62,8 +61,8 @@ width: auto;
 <script>
 var canvas = new fabric.Canvas('c');
     
-// canvas.setWidth(1024);
-// canvas.setHeight(1024);
+canvas.setWidth(1024);
+canvas.setHeight(1024);
     
 document.getElementById("uploader").onchange = function(e) {
 var reader = new FileReader();
@@ -95,26 +94,17 @@ saveAs(blob, "myIMG.png");
 });
 });
 
-var sceneWidth = 1000;
-var sceneHeight = 1000;
-
-var stage = new Konva.Stage({
-container: 'container',
-// first just set set as is
-width: sceneWidth,
-height: sceneHeight,
-});
 
 
 function fitStageIntoParentContainer() {
-var container = document.querySelector('#stage-parent');
+var canvas = document.querySelector('#stage-parent');
 
 // now we need to fit stage into parent container
-var containerWidth = container.offsetWidth;
+var canvasWidth = canvas.offsetWidth;
 
 // but we also make the full scene visible
 // so we need to scale all objects on canvas
-var scale = containerWidth / sceneWidth;
+var scale = canvasWidth / sceneWidth;
 
 stage.width(sceneWidth * scale);
 stage.height(sceneHeight * scale);
