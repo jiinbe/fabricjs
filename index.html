@@ -54,7 +54,7 @@ width: auto;
 </main>
 <script>
 var canvas = new fabric.Canvas('c');
-canvas.clearRect(0, 0, 1024, 1024);
+
 canvas.setWidth(1024);
 canvas.setHeight(1024);
     
@@ -69,8 +69,9 @@ img.set({
 left: 100,
 top: 60
 });
-img.width = canvas.width;
-img.height = canvas.height;
+canvas.e(0, 0, 1024, 1024);
+// img.width = canvas.width;
+// img.height = canvas.height;
 img.scaleToWidth(200);
 canvas.add(img).setActiveObject(img).renderAll();
 }
