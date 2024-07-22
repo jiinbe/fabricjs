@@ -29,11 +29,6 @@ img, canvas {
 width: 100%;
 height: auto;
 }
-#cvs {
-width: 100%;
-height: auto;
-resize: both;
-}
 @media (max-width: 700px) {
 main {
 margin: 0 auto;
@@ -53,16 +48,19 @@ width: auto;
 <h1>Example Fabricjs</h1>
 <p><input id="uploader" type="file" accept="image/*"></p>
 <p>
-<div id="cvs">
 <canvas id="c"></canvas>
-</div>
 </p>
 <p><button id="download">Download</button></p>
 </main>
 <script>
 var canvas = new fabric.Canvas('c');
-canvas.setWidth(1024);
-canvas.setHeight(1024);
+// canvas.setWidth(1024);
+// canvas.setHeight(1024);
+
+var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+var height = (window.innerHeight > 0) ? window.innerHeight : screen.height;
+canvas.width = width;
+canvas.height = height;
     
 document.getElementById("uploader").onchange = function(e) {
 var reader = new FileReader();
