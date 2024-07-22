@@ -61,10 +61,6 @@ width: auto;
 </main>
 <script>
 var canvas = new fabric.Canvas('c');
-
-canvas.setWidth(1024);
-canvas.setHeight(1024);
-canvas.calcOffset();
     
 // canvas.setWidth(1024);
 // canvas.setHeight(1024);
@@ -98,6 +94,17 @@ $("#c").get(0).toBlob(function(blob){
 saveAs(blob, "myIMG.png");
 });
 });
+
+var sceneWidth = 1000;
+var sceneHeight = 1000;
+
+var stage = new Konva.Stage({
+container: 'container',
+// first just set set as is
+width: sceneWidth,
+height: sceneHeight,
+});
+
 
 function fitStageIntoParentContainer() {
 var container = document.querySelector('#stage-parent');
