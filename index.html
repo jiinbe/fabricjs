@@ -70,6 +70,11 @@ document.getElementById("uploader").onchange = function(e) {
   }
   reader.readAsDataURL(e.target.files[0]);
 }
+
+fabric.Image.fromURL('img/twibbon.png',function(img){
+img.scaleToWidth(canvas.getWidth());
+canvas.setOverlayImage(img, canvas.renderAll.bind(canvas));
+});
 </script>
 <!--
 <script src="js/app.js"></script>
