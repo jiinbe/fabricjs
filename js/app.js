@@ -3,7 +3,7 @@ document.getElementById("uploadFile").value = this.files[0].name;
 };
 var canvas = new fabric.Canvas('c');
 canvas.setWidth(1024);
-canvas.setHeight(124);
+canvas.setHeight(1024);
                                     
 var canvasWrapper = document.getElementById('c');
 var canvasWrapperWidth = canvasWrapper.clientWidth;
