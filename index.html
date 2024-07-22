@@ -46,33 +46,45 @@ width: auto;
 <body>
 <main>
 <h1>Example Fabricjs</h1>
-<p><input id="uploader" type="file" accept="image/*"></p>
+<p><input id="imgLoader" type="file" accept="image/*"></p>
 <p>
 <canvas id="c"></canvas>
 </p>
 <p><button id="download">Download</button></p>
 </main>
 <script>
-var canvas = new fabric.Canvas('c');
-canvas.setWidth(300);
-canvas.setHeight(300);
-  
-document.getElementById("uploader").onchange = function(e) {
-  var reader = new FileReader();
-  reader.onload = function(e) {
-    var image = new Image();
-    image.src = e.target.result;
-    image.onload = function() {
-      var img = new fabric.Image(image);
-      img.set({
-        left: 100,
-        top: 60
-      });
-      img.scaleToWidth(200);
-      canvas.add(img).setActiveObject(img).renderAll();
-    }
-  }
-  reader.readAsDataURL(e.target.files[0]);
+canvacanvas = new fabric.Canvas('c');
+
+document.getElementById('imgLoader').onchange = function handleImage(e) {
+var reader = new FileReader();
+reader.onload = function(event) {
+
+var imgObj = new Image();
+imgObj.src = event.target.result;
+// console.log(imgObj.src);
+imgObj.onload = function() {
+// start fabricJS stuff
+var image = new fabric.Image(imgObj);
+// canvas.width = image.width;
+// canvas.height = image.height;
+// console.log(canvas.width, canvas.height);
+image.set({
+left: 0,
+top: 0,
+angle: 0,
+padding: 10,
+cornersize: 10,
+// width: canvas.width,
+// height: canvas.height
+});
+image.width = canvas.width;
+image.height = canvas.height;
+//image.scale(getRandomNum(0.1, 0.25)).setCoords();
+canvas.add(image);
+// end fabricJS stuff
+}
+}
+reader.readAsDataURL(e.target.files[0]);
 }
 
 fabric.Image.fromURL('img/twibbon.png', function(img) {
