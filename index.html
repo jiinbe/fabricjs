@@ -77,74 +77,8 @@ document.getElementById("uploader").onchange = function(e) {
   reader.readAsDataURL(e.target.files[0]);
 }
 
-function resize() {
-var canvasSizer = document.getElementById("imageEditor");
-var canvasScaleFactor = canvasSizer.offsetWidth / 525;
-var width = canvasSizer.offsetWidth;
-var height = canvasSizer.offsetHeight;
-var ratio = canvas.getWidth() / canvas.getHeight();
-if ((width / height) &gt; ratio) {
-width = height * ratio;
-} else {
-height = width / ratio;
-}
-var scale = width / canvas.getWidth();
-var zoom = canvas.getZoom();
-zoom *= scale;
-canvas.setDimensions({
-width: width,
-height: height
-});
-canvas.setViewportTransform([zoom, 0, 0, zoom, 0, 0])
-canvas.setOverlayImage('img/twibbon.png', function() {
-canvas.overlayImage &amp;&amp; canvas.overlayImage.scaleToWidth(width)
-canvas.renderAll()
-}, {
-// Needed to position overlayImage at 0/0
-originX: 'left',
-originY: 'top'
-});
-}
-
-window.addEventListener('load', resize, false);
-window.addEventListener('resize', resize, false);
-
-var textObj = new fabric.IText("Test Text", {
-fontSize: 22,
-top: 362.5,
-left: 262.5,
-hasControls: true,
-fontWeight: 'bold',
-fontFamily: 'Montserrat',
-fontStyle: 'normal',
-centeredrotation: true,
-originX: 'center',
-originY: 'center'
-});
-canvas.add(textObj);
-canvas.renderAll();
-
-canvas.on({
-'touch:gesture': function() {
-var text = document.createTextNode(' Gesture ');
-info.insertBefore(text, info.firstChild);
-},
-'touch:drag': function() {
-var text = document.createTextNode(' Dragging ');
-info.insertBefore(text, info.firstChild);
-},
-'touch:orientation': function() {
-var text = document.createTextNode(' Orientation ');
-info.insertBefore(text, info.firstChild);
-},
-'touch:shake': function() {
-var text = document.createTextNode(' Shaking ');
-info.insertBefore(text, info.firstChild);
-},
-'touch:longpress': function() {
-var text = document.createTextNode(' Longpress ');
-info.insertBefore(text, info.firstChild);
-}
+fabric.Image.fromURL('img/twibbon.png', function(img) {
+    canvas.setOverlayImage(img, canvas.renderAll.bind(canvas));
 });
 </script>
 <!--
