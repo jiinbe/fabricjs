@@ -29,6 +29,16 @@ img, canvas {
 width: 100%;
 height: auto;
 }
+#cvs {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  border: 1px solid #E5E7EB;
+  border-radius: 0.25rem;
+  margin-bottom: 2rem;
+  resize: both;
+  overflow: auto;
+}
 @media (max-width: 700px) {
 main {
 margin: 0 auto;
@@ -48,7 +58,9 @@ width: auto;
 <h1>Example Fabricjs</h1>
 <p><input id="uploader" type="file" accept="image/*"></p>
 <p>
+<div id="cvs">
 <canvas id="c" width="300" height="300"></canvas>
+</div>
 </p>
 <p><button id="download">Download</button></p>
 </main>
@@ -65,8 +77,8 @@ image.src = e.target.result;
 image.onload = function() {
 var img = new fabric.Image(image);
 img.set({
-left: 0,
-top: 0
+left: 100,
+top: 60
 });
 img.width = canvas.width;
 img.height = canvas.height;
