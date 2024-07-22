@@ -65,8 +65,8 @@ imgObj.src = event.target.result;
 imgObj.onload = function() {
 // start fabricJS stuff
 var image = new fabric.Image(imgObj);
-// canvas.width = image.width;
-// canvas.height = image.height;
+canvas.width = image.width;
+canvas.height = image.height;
 // console.log(canvas.width, canvas.height);
 image.set({
 left: 0,
@@ -74,8 +74,8 @@ top: 0,
 angle: 0,
 padding: 10,
 cornersize: 10,
-// width: canvas.width,
-// height: canvas.height
+width: canvas.width,
+height: canvas.height
 });
 image.width = canvas.width;
 image.height = canvas.height;
