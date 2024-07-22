@@ -58,10 +58,9 @@ width: auto;
 </main>
 <script>
 var canvas = new fabric.Canvas('c');
-// canvas.setWidth(1024);
-// canvas.setHeight(1024);
-canvas.width = image.width;
-canvas.height = image.height;
+canvas.setWidth(1024);
+canvas.setHeight(1024);
+
   
 document.getElementById("uploader").onchange = function(e) {
   var reader = new FileReader();
