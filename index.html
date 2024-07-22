@@ -49,8 +49,29 @@ width: auto;
 <p><canvas id="c"></canvas></p>
 <p><button id="download">Download</button></p>
 </main>
+<script>
+var canvas = new fabric.Canvas('c');
 
-<!--<script src="js/app.js"></script>-->
+document.getElementById("uploader").onchange = function(e) {
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    var image = new Image();
+    image.src = e.target.result;
+    image.onload = function() {
+      var img = new fabric.Image(image);
+      img.set({
+        left: 100,
+        top: 60
+      });
+      img.scaleToWidth(200);
+      canvas.add(img).setActiveObject(img).renderAll();
+    }
+  }
+  reader.readAsDataURL(e.target.files[0]);
+}
+</script>
+<!--
+<script src="js/app.js"></script>
 <script>
 document.getElementById("uploadBtn").onchange = function () {
 document.getElementById("uploadFile").value = this.files[0].name;
@@ -105,5 +126,6 @@ saveAs(blob, "myIMG.png");
 });
 });
 </script>
+-->
 </body>
 </html>
