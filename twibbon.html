@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="https://unpkg.com/konva@9.3.14/konva.min.js"></script>
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/fabric.min.js"></script>
 <script src="js/FileSaver.js"></script>
@@ -31,20 +30,12 @@ margin-top: 5px;
 </head>
 
 <body>
-<div id="container"></div>
 <p><input id="uploader" type="file" accept="image/*"></p>
 <p><canvas id="c"></canvas></p>
 <p><button id="download">Download</button></p>
 <script>
 var width = window.innerWidth;
 var height = window.innerHeight;
-
-var stage = new Konva.Stage({
-container: 'container',
-width: width,
-height: height,
-});
-
 var canvas = new fabric.Canvas('c');
     
 canvas.setWidth(1024);
