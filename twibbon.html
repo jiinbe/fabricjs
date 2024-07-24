@@ -34,12 +34,10 @@ margin-top: 5px;
 <p><canvas id="c"></canvas></p>
 <p><button id="download">Download</button></p>
 <script>
-var width = window.innerWidth;
-var height = window.innerHeight;
 var canvas = new fabric.Canvas('c');
     
-canvas.setWidth(1024);
-canvas.setHeight(1024);
+canvas.width(1024);
+canvas.height(1024);
     
 document.getElementById("uploader").onchange = function(e) {
 var reader = new FileReader();
@@ -52,8 +50,8 @@ img.set({
 left: 100,
 top: 60
 });
-img.width = canvas.setWidth;
-img.height = canvas.setHeight;
+img.width = canvas.width;
+img.height = canvas.height;
 // img.scaleToWidth(200);
 canvas.add(img).setActiveObject(img).renderAll();
 }
