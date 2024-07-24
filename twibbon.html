@@ -39,51 +39,40 @@ width: width,
 height: height,
 });
 
-var layer = new Konva.Layer();
-stage.add(layer);
-
-var box = new Konva.Rect({
-x: stage.width() / 2 - 50,
-y: stage.height() / 2 - 25,
-width: 100,
-height: 50,
-fill: '#00D2FF',
-stroke: 'black',
-strokeWidth: 4,
-draggable: true,
+var canvas = new fabric.Canvas('c');
+    
+canvas.setWidth(1024);
+canvas.setHeight(1024);
+    
+document.getElementById("uploader").onchange = function(e) {
+var reader = new FileReader();
+reader.onload = function(e) {
+var image = new Image();
+image.src = e.target.result;
+image.onload = function() {
+var img = new fabric.Image(image);
+img.set({
+left: 100,
+top: 60
 });
-layer.add(box);
-
-var circle = new Konva.Circle({
-x: stage.width() - 50,
-y: stage.height() - 50,
-radius: 50,
-fill: 'red',
-stroke: 'black',
-strokeWidth: 4,
-draggable: true,
-});
-layer.add(circle);
-
-// function from https://stackoverflow.com/a/15832662/512042
-function downloadURI(uri, name) {
-var link = document.createElement('a');
-link.download = name;
-link.href = uri;
-document.body.appendChild(link);
-link.click();
-document.body.removeChild(link);
-delete link;
+img.width = canvas.setWidth;
+img.height = canvas.setHeight;
+// img.scaleToWidth(200);
+canvas.add(img).setActiveObject(img).renderAll();
 }
-
-document.getElementById('save').addEventListener(
-'click',
-function () {
-var dataURL = stage.toDataURL({ pixelRatio: 3 });
-downloadURI(dataURL, 'stage.png');
-},
-false
-);
+}
+reader.readAsDataURL(e.target.files[0]);
+}
+    
+fabric.Image.fromURL('img/twibbon.png', function(img) {
+canvas.setOverlayImage(img, canvas.renderAll.bind(canvas));
+});
+    
+$("#download").click(function(){
+$("#c").get(0).toBlob(function(blob){
+saveAs(blob, "myIMG.png");
+});
+});
 </script>
 </body>
 </html>
