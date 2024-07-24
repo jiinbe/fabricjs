@@ -81,10 +81,6 @@ button:focus {
 border-color: #666;
 }
 
-.canvas-container {
-width: 100%;
-}
-
 @media (max-width: 700px) {
 main {
 margin: 0 auto;
@@ -151,32 +147,6 @@ $("#c").get(0).toBlob(function(blob){
 saveAs(blob, "myIMG.png");
 });
 });
-
-function rescale_canvas_if_needed()
-{
-var optimal_dimensions = get_optimal_canvas_dimensions();
-var scaleFactor=optimal_dimensions[0]/wpd.canvas_w;
-if(scaleFactor != 1) {
-wpd_editor.canvas.setWidth(optimal_dimensions[0]);
-wpd_editor.canvas.setHeight(optimal_dimensions[1]);
-wpd_editor.canvas.setZoom(scaleFactor);
-wpd_editor.canvas.calcOffset();
-wpd_editor.canvas.renderAll();
-}
-}
-
-$( window ).resize(function() {
-clearTimeout(resizeId);
-resizeId = setTimeout(handle_resize, 500);
-});
- 
-function handle_resize()
-{
-$(".canvas-container").hide();
-rescale_canvas_if_needed();
-$(".canvas-container").show();               
-	 
-}
 </script>
 
 </body>
