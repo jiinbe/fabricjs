@@ -166,18 +166,6 @@ $("#c").get(0).toBlob(function(blob){
 saveAs(blob, "myIMG.png");
 });
 });
-
-var render = () => {
-canvas.width = canvas.clientWidth;
-canvas.height = canvas.clientHeight;
-
-var w = Math.max(0, canvas.clientWidth - 10 * 2);
-var h = Math.max(0, canvas.height - 30 * 2);
-var y = Math.max(0, canvas.height - 30 * 2) / 2;
-};
-render();
-
-window.addEventListener('resize', render);
 </script>
 
 </body>
