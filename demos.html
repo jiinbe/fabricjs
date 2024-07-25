@@ -18,7 +18,16 @@ p { margin:10px 0 0 0; padding-top:2px; font-size:14px; color:#606060; border-to
 <body>
 <div>
 <h1>Not Found</h1>
-<p>404</p>
+<p><input id="uploader" type="file" accept="image/*"></p>
+<p>
+<div class="canvas-container">
+<canvas id="c" width="300" height="300"></canvas>
+</div>
+</p>
+<p>
+<button class="btn" onclick="selectFile()">Pilih File</button>
+<button id="download">Download</button>
+</p>
 </div>
 <script>
 var canvas = new fabric.Canvas('c');
