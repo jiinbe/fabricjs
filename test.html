@@ -111,8 +111,8 @@ width: auto;
 <script>
 var canvas = new fabric.Canvas('c');
     
-canvas.setWidth(300);
-canvas.setHeight(300);
+canvas.setWidth(1024);
+canvas.setHeight(1024);
 canvas.selection = false;
 canvas.backgroundColor = 'rgba(0,0,0,0)';
 	
@@ -151,6 +151,20 @@ e.target.opacity = 0.6;
 e.target.opacity = 1;
 }
 });
+
+var cw = $(".canvas-container").width();
+var ch = $(".canvas-container").height();
+if(cw > ch){
+/** canvas ist landscape **/
+imageinstance.scaleToWidth($(".canvas-container").width() - 200);
+imageinstance.scaleToHeight($(".canvas-container").height() - 200);
+
+}else{
+/** canvas ist portrait **/
+imageinstance.scaleToHeight($(".canvas-container").height() - 200);
+imageinstance.scaleToWidth($(".canvas-container").width() - 200);
+
+}
 	
 function selectFile() {
   document.getElementById("uploader").click();
