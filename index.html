@@ -111,7 +111,26 @@ width: auto;
 
 <script>
 var canvas = new fabric.Canvas('c');
-
+fabric.Image.fromURL('https://jiinbe.github.io/fabricjs/img/frames.png', img => {
+img.width = 1080;
+img.height = 1080;
+img.lockMovementX = img.lockMovementY = true;
+img.hasControls = img.selectable = false;
+img.hoverCursor = 'default';
+ensureResponsiveness();
+window.addEventListener('resize', ensureResponsiveness)
+function ensureResponsiveness() {
+c.setDimensions({
+width: canvas.offsetWidth,
+height: canvas.offsetHeight,
+});
+img.scaleX = Math.min(canvas.offsetWidth / img.width, 1)
+img.scaleY = Math.min(canvas.offsetHeight / img.height, 1, img.scaleX)
+img.scaleX = Math.min(img.scaleX, img.scaleY)
+img.center();
+}
+})
+		
 // canvas.setWidth(300);
 // canvas.setHeight(300);
 canvas.selection = false;
