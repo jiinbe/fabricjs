@@ -162,6 +162,24 @@ $("#c").get(0).toBlob(function(blob){
 saveAs(blob, "myIMG.png");
 });
 });
+
+var render = () => {
+canvas.width = canvas.clientWidth;
+canvas.height = canvas.clientHeight;
+
+ctx.font = "30px sans-serif";
+ctx.fillText("Fixed", 10, 30);
+var text = "Responsive";
+var w = Math.max(0, canvas.clientWidth - 10 * 2);
+var h = Math.max(0, canvas.height - 30 * 2);
+var size = Math.min(h, w / text.length);
+var y = Math.max(0, canvas.height - 30 * 2) / 2;
+ctx.font = size + "px serif";
+ctx.fillText(text, 10, 30 + size);
+};
+render();
+
+window.addEventListener('resize', render);
 </script>
 
 </body>
