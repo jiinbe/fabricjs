@@ -144,19 +144,7 @@ canvas.setOverlayImage(img, canvas.renderAll.bind(canvas));
 });
 
 canvas.on({
-'mouse:down': function(e) {
-if (e.target) {
-e.target.opacity = 0.5;
-canvas.renderAll();
-}
-},
-'mouse:up': function(e) {
-if (e.target) {
-e.target.opacity = 1;
-canvas.renderAll();
-}
-},
-'object:moved': function(e) {
+'object:moving': function(e) {
 e.target.opacity = 0.5;
 },
 'object:modified': function(e) {
