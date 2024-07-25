@@ -20,5 +20,75 @@ p { margin:10px 0 0 0; padding-top:2px; font-size:14px; color:#606060; border-to
 <h1>Not Found</h1>
 <p>404</p>
 </div>
+<script>
+var canvas = new fabric.Canvas('c');
+    
+canvas.setWidth(300);
+canvas.setHeight(300);
+canvas.selection = false;
+canvas.backgroundColor = 'rgba(0,0,0,0)';
+	
+document.getElementById("uploader").onchange = function(e) {
+var reader = new FileReader();
+reader.onload = function(e) {
+var image = new Image();
+image.src = e.target.result;
+image.onload = function() {
+var img = new fabric.Image(image);
+img.set({
+borderColor: 'gray',
+cornerColor: 'black',
+transparentCorners: true,
+left: 100,
+top: 60
+});
+// img.width = canvas.setWidth;
+// img.height = canvas.setHeight;
+img.scaleToWidth(200);
+canvas.add(img).setActiveObject(img).renderAll();
+}
+}
+reader.readAsDataURL(e.target.files[0]);
+}
+    
+fabric.Image.fromURL('img/pain.png', function(img) {
+canvas.setOverlayImage(img, canvas.renderAll.bind(canvas));
+});
+
+canvas.setOverlayImage('mask.png', canvas.renderAll.bind(canvas));
+	
+canvas.on({
+'object:moving': function(e) {
+e.target.opacity = 0.6;
+},
+'object:modified': function(e) {
+e.target.opacity = 1;
+}
+});
+
+var cw = $(".canvas-container").width();
+var ch = $(".canvas-container").height();
+if(cw > ch){
+/** canvas ist landscape **/
+imageinstance.scaleToWidth($(".canvas-container").width() - 200);
+imageinstance.scaleToHeight($(".canvas-container").height() - 200);
+
+}else{
+/** canvas ist portrait **/
+imageinstance.scaleToHeight($(".canvas-container").height() - 200);
+imageinstance.scaleToWidth($(".canvas-container").width() - 200);
+
+}
+	
+function selectFile() {
+  document.getElementById("uploader").click();
+}
+	
+$("#download").click(function(){
+$("#c").get(0).toBlob(function(blob){
+saveAs(blob, "myIMG.png");
+});
+});
+</script>
 </body>
 </html>
