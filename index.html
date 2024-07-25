@@ -134,7 +134,9 @@ img.scaleX = Math.min(img.scaleX, img.scaleY)
 img.center();
 }
 })
-		
+canvas.setOverlayImage(img, canvas.renderAll.bind(canvas));
+});
+	
 // canvas.setWidth(300);
 // canvas.setHeight(300);
 canvas.selection = false;
