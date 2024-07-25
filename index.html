@@ -114,7 +114,7 @@ width: auto;
 <p><input id="uploader" type="file" accept="image/*"></p>
 <p>
 <div class="wrapper">
-<canvas class="cvs" id="c" width="300" height="300"></canvas>
+<canvas class="cvs" id="c" width="" height=""></canvas>
 </div>
 </p>
 <p>
@@ -154,7 +154,7 @@ canvas.add(img).setActiveObject(img).renderAll();
 reader.readAsDataURL(e.target.files[0]);
 }
     
-fabric.Image.fromURL('img/pain.png', function(img) {
+fabric.Image.fromURL('img/frames.png', function(img) {
 canvas.setOverlayImage(img, canvas.renderAll.bind(canvas));
 });
 
