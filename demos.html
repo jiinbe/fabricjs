@@ -1,164 +1,21 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="utf-8">
-<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<title>404 - Not Found</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Example FabricJS</title>
 <style type="text/css">
-::selection { 
-background-color: #E13300; 
-color: white; 
-}
-::-moz-selection { 
-background-color: #E13300; 
-color: white; 
-}
-body {	
-background-color: #fff;	
-/* margin: 40px;	*/
-margin: 0;
-padding: 0;
-font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-a {	
-color: #003399;	
-background-color: transparent;	
-}
-h1 {	
-color: #444;	
-background-color: transparent;	
-border-bottom: 1px solid #D0D0D0;	
-}
-code {	
-font-family: Consolas, Monaco, Courier New, Courier, monospace;	
-font-size: 12px;	
-background-color: #f9f9f9;	
-border: 1px solid #D0D0D0;	
-color: #002166;	
-display: block;	
-margin: 14px 0 14px 0;	
-padding: 12px 10px 12px 10px;
-}
-#container {	
-width: 600px;
-margin: 5em auto;
-padding: 2em;		
-}
-label {
-display: block;
-}
-input, button, select, textarea {
-font-family: inherit;
-font-size: inherit;
-padding: 0.4em;
-margin: 0 0 0.5em 0;
-box-sizing: border-box;
-border: 1px solid #ccc;
-border-radius: 2px;
-max-width: 100%;
-}
-input:disabled {
-color: #ccc;
-}
-input[type="range"] {
-height: 0;
-}
-input[type="file"] {
-display: none;
-}  
-button[onclick*="()"] {
-cursor: pointer;
-}  
-button {
-color: #333;
-background-color: #f4f4f4;
-outline: none;
-}
-button:disabled {
-color: #999;
-}
-button:not(:disabled):active {
-background-color: #ddd;
-}
-button:focus {
-border-color: #666;
-}
-@media (max-width: 700px) {
-#container {
-margin: 0 auto;
-width: auto;
-}
-}
+body { background-color:#d0d0d0; font-family:sans-serif; padding:0 30px }
+div { background-color:#f8f8f8; letter-spacing:4px; max-width:400px; margin:100px auto 0 auto; padding:50px; border-radius:10px; border:1px solid #808080; box-shadow:8px 15px 20px #404040 }
+h1 { margin:0; font-size:22px; font-weight:normal }
+p { margin:10px 0 0 0; padding-top:2px; font-size:14px; color:#606060; border-top:1px solid #a0a0ff; text-align:right; font-weight:bold }
+@media (max-width:767px) { h1 { font-size:90%; letter-spacing:2px } p { font-size:70% } }
 </style>
-<script src="js/jquery-3.3.1.min.js"></script>
-<script src="js/fabric.min.js"></script>
-<script src="js/FileSaver.js"></script>
-<script src="js/canvas-toBlob.js"></script>
 </head>
 <body>
-<div id="container">
-<h1>Example FabricJS</h1>
-<p><input id="uploader" type="file" accept="image/*"></p>
-<p><canvas id="c"></canvas></p>
-<p>
-<button class="btn" onclick="selectFile()">Pilih File</button>
-<button id="download">Download</button>
-</p>
+<div>
+<h1>Not Found</h1>
+<p>404</p>
 </div>
-<script>
-var canvas = new fabric.Canvas('c');
-    
-canvas.setWidth(1024);
-canvas.setHeight(1024);
-canvas.selection = false;
-canvas.backgroundColor = 'rgba(0,0,0,0)';
-	
-document.getElementById("uploader").onchange = function(e) {
-var reader = new FileReader();
-reader.onload = function(e) {
-var image = new Image();
-image.src = e.target.result;
-image.onload = function() {
-var img = new fabric.Image(image);
-img.set({
-borderColor: 'gray',
-cornerColor: 'black',
-transparentCorners: true,
-left: 100,
-top: 60
-});
-// img.width = canvas.setWidth;
-// img.height = canvas.setHeight;
-img.scaleToWidth(200);
-canvas.add(img).setActiveObject(img).renderAll();
-}
-}
-reader.readAsDataURL(e.target.files[0]);
-}
-    
-fabric.Image.fromURL('img/pain.png', function(img) {
-canvas.setOverlayImage(img, canvas.renderAll.bind(canvas));
-});
-
-canvas.on({
-'object:moving': function(e) {
-e.target.opacity = 0.6;
-},
-'object:modified': function(e) {
-e.target.opacity = 1;
-}
-});
-	
-function selectFile() {
-  document.getElementById("uploader").click();
-}
-	
-$("#download").click(function(){
-$("#c").get(0).toBlob(function(blob){
-saveAs(blob, "myIMG.png");
-});
-});
-</script>
 </body>
 </html>
