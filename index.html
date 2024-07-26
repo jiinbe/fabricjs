@@ -98,11 +98,7 @@ width: auto;
 <main>
 <h1>Example Fabricjs</h1>
 <p><input id="uploader" type="file" accept="image/*"></p>
-<p>
-<div class="wrapper">
-<canvas id="c"></canvas>
-</div>
-</p>
+<p><canvas id="c"></canvas></p>
 <p>
 <button class="btn" onclick="selectFile()">Pilih File</button>
 <button id="download">Download</button>
@@ -110,9 +106,6 @@ width: auto;
 </main>
 
 <script>
-canvas.width = document.body.offsetWidth;
-canvas.height = document.body.offsetHeight;
-
 var canvas = new fabric.Canvas('c');
 	
 canvas.setWidth(300);
@@ -134,8 +127,6 @@ transparentCorners: true,
 left: 100,
 top: 60
 });
-// img.width = canvas.setWidth;
-// img.height = canvas.setHeight;
 img.scaleToWidth(200);
 canvas.add(img).setActiveObject(img).renderAll();
 }
@@ -146,20 +137,6 @@ reader.readAsDataURL(e.target.files[0]);
 fabric.Image.fromURL('img/pain.png', function(img) {
 canvas.setOverlayImage(img, canvas.renderAll.bind(canvas));
 });
-
-ensureResponsiveness();
-window.addEventListener('resize', ensureResponsiveness)
-function ensureResponsiveness() {
-canvas.setDimensions({
-width: canvas.offsetWidth,
-height: canvas.offsetHeight,
-});
-img.scaleX = Math.min(canvas.offsetWidth / img.width, 1)
-img.scaleY = Math.min(canvas.offsetHeight / img.height, 1, img.scaleX)
-img.scaleX = Math.min(img.scaleX, img.scaleY)
-img.center();
-}
-})
 	
 canvas.on({
 'object:moving': function(e) {
