@@ -37,25 +37,6 @@ label {
 display: block;
 }
 
-input, button, select, textarea {
-font-family: inherit;
-font-size: inherit;
-padding: 0.4em;
-margin: 0 0 0.5em 0;
-box-sizing: border-box;
-border: 1px solid #ccc;
-border-radius: 2px;
-max-width: 100%;
-}
-
-input:disabled {
-color: #ccc;
-}
-
-input[type="range"] {
-height: 0;
-}
-
 input[type="file"] {
 display: none;
 }
@@ -65,21 +46,15 @@ cursor: pointer;
 }
   
 button {
-color: #333;
-background-color: #f4f4f4;
-outline: none;
+padding: 0.5rem 1rem;
+border: 1px solid #d0d7de;
+border-radius: 0.25rem;
+background-color: #f6f8fa;
+box-shadow: 0 1px 0 rgba(27, 31, 36, 0.1);
 }
 
-button:disabled {
-color: #999;
-}
-
-button:not(:disabled):active {
-background-color: #ddd;
-}
-
-button:focus {
-border-color: #666;
+button:hover {
+background-color: #d8dee4;
 }
 	
 @media (max-width: 700px) {
