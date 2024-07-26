@@ -54,7 +54,10 @@ background-color: #d8dee4;
 <h1>Example Fabricjs</h1>
 <p><input id="uploader" type="file" accept="image/*"></p>
 <p><canvas id="c"></canvas></p>
-<p><button id="download">Download</button></p>
+<p>
+<button class="btn" onclick="selectFile()">Pilih File</button>
+<button id="download">Download</button>
+</p>
 </div>
 <script>
 var canvas = new fabric.Canvas('c');
