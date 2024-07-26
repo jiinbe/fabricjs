@@ -114,28 +114,6 @@ canvas.width = document.body.offsetWidth;
 canvas.height = document.body.offsetHeight;
 
 var canvas = new fabric.Canvas('c');
-
-fabric.Image.fromURL('img/frames.png', img => {
-img.width = 1080;
-img.height = 1080;
-img.lockMovementX = img.lockMovementY = true;
-img.hasControls = img.selectable = false;
-img.hoverCursor = 'default';
-ensureResponsiveness();
-window.addEventListener('resize', ensureResponsiveness)
-function ensureResponsiveness() {
-c.setDimensions({
-width: canvas.offsetWidth,
-height: canvas.offsetHeight,
-});
-img.scaleX = Math.min(canvas.offsetWidth / img.width, 1)
-img.scaleY = Math.min(canvas.offsetHeight / img.height, 1, img.scaleX)
-img.scaleX = Math.min(img.scaleX, img.scaleY)
-img.center();
-}
-})
-canvas.setOverlayImage(img, canvas.renderAll.bind(canvas));
-});
 	
 // canvas.setWidth(300);
 // canvas.setHeight(300);
@@ -169,8 +147,26 @@ reader.readAsDataURL(e.target.files[0]);
 // canvas.setOverlayImage(img, canvas.renderAll.bind(canvas));
 // });
 
-// canvas.setOverlayImage('mask.png', canvas.renderAll.bind(canvas));
+canvas.setOverlayImage('mask.png', canvas.renderAll.bind(canvas));
+img.height = 1080;
+img.lockMovementX = img.lockMovementY = true;
+img.hasControls = img.selectable = false;
+img.hoverCursor = 'default';
 
+ensureResponsiveness();
+window.addEventListener('resize', ensureResponsiveness)
+function ensureResponsiveness() {
+c.setDimensions({
+width: canvas.offsetWidth,
+height: canvas.offsetHeight,
+});
+img.scaleX = Math.min(canvas.offsetWidth / img.width, 1)
+img.scaleY = Math.min(canvas.offsetHeight / img.height, 1, img.scaleX)
+img.scaleX = Math.min(img.scaleX, img.scaleY)
+img.center();
+}
+})
+	
 canvas.on({
 'object:moving': function(e) {
 e.target.opacity = 0.6;
