@@ -79,6 +79,9 @@ image.src = e.target.result;
 image.onload = function() {
 var img = new fabric.Image(image);
 img.set({
+borderColor: 'gray',
+cornerColor: 'black',
+transparentCorners: true,
 left: 100,
 top: 60
 });
