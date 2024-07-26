@@ -115,8 +115,8 @@ canvas.height = document.body.offsetHeight;
 
 var canvas = new fabric.Canvas('c');
 	
-// canvas.setWidth(300);
-// canvas.setHeight(300);
+canvas.setWidth(300);
+canvas.setHeight(300);
 canvas.selection = false;
 canvas.backgroundColor = 'rgba(0,0,0,0)';
 	
@@ -143,7 +143,7 @@ canvas.add(img).setActiveObject(img).renderAll();
 reader.readAsDataURL(e.target.files[0]);
 }
     
-fabric.Image.fromURL('img/frames.png', function(img) {
+fabric.Image.fromURL('img/pain.png', function(img) {
 canvas.setOverlayImage(img, canvas.renderAll.bind(canvas));
 });
 
