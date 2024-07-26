@@ -60,10 +60,6 @@ background-color: #d8dee4;
 canvas {
 width: 100%;
 }
-
-.wrap {
-width: 80%;
-}
 	
 @media (max-width: 700px) {
 main {
@@ -81,23 +77,14 @@ width: auto;
 <main>
 <h1>Example Fabricjs</h1>
 <p><input id="uploader" type="file" accept="image/*"></p>
-<p>
-<div class="wrap">
-<canvas id="c" width="1080" height="1080" style="border:1px solid #c3c3c3;">
-Your browser does not support the canvas element.
-</canvas>
-</div>
-</p>
+<p><canvas id="c">Your browser does not support the canvas element.</canvas></p>
 <p>
 <button class="btn" onclick="selectFile()">Pilih File</button>
 <button id="download">Download</button>
 </p>
 </main>
 
-<script>
-var w = window.innerWidth;
-var h = window.innerHeight;
-	
+<script>	
 var canvas = new fabric.Canvas('c');
 	
 // canvas.setWidth(300);
