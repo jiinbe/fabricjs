@@ -147,16 +147,10 @@ fabric.Image.fromURL('img/frames.png', function(img) {
 canvas.setOverlayImage(img, canvas.renderAll.bind(canvas));
 });
 
-	img.width = 1080;
-img.height = 1080;
-img.lockMovementX = img.lockMovementY = true;
-img.hasControls = img.selectable = false;
-img.hoverCursor = 'default';
-
 ensureResponsiveness();
 window.addEventListener('resize', ensureResponsiveness)
 function ensureResponsiveness() {
-c.setDimensions({
+canvas.setDimensions({
 width: canvas.offsetWidth,
 height: canvas.offsetHeight,
 });
