@@ -86,6 +86,9 @@ width: auto;
 
 <script>	
 var canvas = new fabric.Canvas('c');
+hoverCursor: 'pointer',
+selection: false,
+targetFindTolerance: 2
 	
 canvas.setWidth(300);
 canvas.setHeight(300);
@@ -115,9 +118,6 @@ reader.readAsDataURL(e.target.files[0]);
 
 fabric.Image.fromURL('img/image.png', function(img) {
 canvas.setOverlayImage(img, canvas.renderAll.bind(canvas));
-hoverCursor: 'pointer',
-selection: false,
-targetFindTolerance: 2
 });
 	
 canvas.on({
