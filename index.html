@@ -46,7 +46,6 @@ cursor: pointer;
 }
   
 button {
-width: 50%;
 padding: 0.5rem 1rem;
 border: 1px solid #d0d7de;
 border-radius: 0.25rem;
@@ -73,7 +72,6 @@ width: auto;
 <script src="js/fabric.min.js"></script>
 <script src="js/FileSaver.js"></script>
 <script src="js/canvas-toBlob.js"></script>
-<script src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
 </head>
 <body>
 <main>
@@ -81,7 +79,7 @@ width: auto;
 <p><input id="uploader" type="file" accept="image/*"></p>
 <p><canvas id="c">Your browser does not support the canvas element.</canvas></p>
 <p>
-<button onclick="selectFile()"><i class="fas fa-image">Pilih File</i></button>
+<button onclick="selectFile()">Pilih File</button>
 <button id="download">Download</button>
 </p>
 </main>
