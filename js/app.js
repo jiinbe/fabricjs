@@ -2,8 +2,10 @@ document.getElementById("uploadBtn").onchange = function () {
 document.getElementById("uploadFile").value = this.files[0].name;
 };
 var canvas = new fabric.Canvas('c');
-canvas.setWidth(1024);
-canvas.setHeight(1024);
+//canvas.setWidth(1024);
+//canvas.setHeight(1024);
+canvas.setWidth(document.body.scrollWidth);
+canvas.setHeight(300);
                                     
 var canvasWrapper = document.getElementById('c');
 var canvasWrapperWidth = canvasWrapper.clientWidth;
